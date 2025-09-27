@@ -1,9 +1,10 @@
 'use client'
 
+import { Coins, User } from 'lucide-react'
+import { motion } from 'motion/react'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
 import { Button } from '@/components/ui/Button'
-import { Coins, Crown, User } from 'lucide-react'
-import { motion } from 'motion/react'
 
 export function CasinoHeader() {
   return (
