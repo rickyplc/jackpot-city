@@ -9,5 +9,19 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Ensure JSON uses Prettier (not the built-in formatter)
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json5]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  // Prevent the built-in JSON formatter from ever taking over
+  "json.format.enable": false,
+
+  // Only format in projects that have a Prettier config
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": true,
+
+  // TypeScript SDK
   "typescript.tsdk": "node_modules/typescript/lib"
 }
