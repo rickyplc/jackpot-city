@@ -1,8 +1,9 @@
+import { Clock } from 'lucide-react'
+import { motion } from 'motion/react'
+
 import { Badge } from '@/components/ui/Badge'
 import { achievementIconMap } from '@/components/ui/icons/AchievementIcons'
 import type { Game } from '@/types'
-import { Clock } from 'lucide-react'
-import { motion } from 'motion/react'
 
 export function AchievementCard({
   gameTitle,
@@ -46,7 +47,7 @@ export function AchievementCard({
         duration: 0.4,
       }}
     >
-      {/* Enhanced time indicator */}
+      {/* Time indicator */}
       <div className="absolute top-4 right-4 z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: -10 }}
@@ -135,7 +136,7 @@ export function AchievementCard({
         </div>
       </div>
 
-      {/* Content - now cleaner without title since it's on image */}
+      {/* Content  */}
       <div className="p-3 sm:p-4 space-y-3 bg-black/20 backdrop-blur-sm rounded-b-2xl">
         {/* Modern progress section */}
         <div className="space-y-3">
