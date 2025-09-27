@@ -5,9 +5,8 @@ const icons = ['star', 'trophy', 'target', 'coins', 'flame', 'zap'] as const
 export const mockGames: Game[] = [
   {
     id: '1',
-    gameTitle: 'Gold Blitz EXTREME',
-    thumbnailUrl:
-      'https://images.unsplash.com/photo-1603410246916-9b2ca82acdd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBzbG90JTIwbWFjaGluZXxlbnwxfHx8fDE3NTg2ODMyNTZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    gameTitle: 'Floating Dragon Year Of The Snake',
+    thumbnailUrl: '/images/games/thumbnails/floating-dragon-year-of-the-snake.webp',
     timeLeft: '4 days left',
     progressPercentage: 67,
     achievements: [
@@ -21,9 +20,8 @@ export const mockGames: Game[] = [
   },
   {
     id: '2',
-    gameTitle: 'Cash Strike Hot Stepper',
-    thumbnailUrl:
-      'https://images.unsplash.com/photo-1633629544357-14223c9837d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHhwb2tlciUyMGNhcmRzJTIwY2FzaW5vfGVufDF8fHx8MTc1ODU5MDkwMXww&ixlib=rb-4.1.0&q=80&w=1080',
+    gameTitle: 'Koa Mega Moolah Cz Square',
+    thumbnailUrl: '/images/games/thumbnails/koa-mega-moolah-cz-square.webp',
     timeLeft: '4 days left',
     progressPercentage: 50,
     achievements: [
@@ -37,9 +35,8 @@ export const mockGames: Game[] = [
   },
   {
     id: '3',
-    gameTitle: 'Links of Ra Cashingo',
-    thumbnailUrl:
-      'https://images.unsplash.com/photo-1625888791210-40ea41c1d0f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb3VsZXR0ZSUyMGNhc2lub3xlbnwxfHx8fDE3NTg3MDc5Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    gameTitle: 'Joker Pin The Win Cz Square',
+    thumbnailUrl: '/images/games/thumbnails/joker-pin-the-win-cz-square.webp',
     timeLeft: '5 days left',
     progressPercentage: 33,
     achievements: [
@@ -53,9 +50,8 @@ export const mockGames: Game[] = [
   },
   {
     id: '4',
-    gameTitle: '12 Masks of Fire Drums',
-    thumbnailUrl:
-      'https://images.unsplash.com/photo-1742666978255-007e0fcfc0c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBibGFja2phY2slMjB0YWJsZXxlbnwxfHx8fDE3NTg3MDg0MTl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    gameTitle: 'Master Gems',
+    thumbnailUrl: '/images/games/thumbnails/master-gems.webp',
     timeLeft: '6 days left',
     progressPercentage: 83,
     achievements: [
@@ -69,9 +65,8 @@ export const mockGames: Game[] = [
   },
   {
     id: '5',
-    gameTitle: 'Gates of Olympus 1000',
-    thumbnailUrl:
-      'https://images.unsplash.com/photo-1739133710741-1468de0acf26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWNlJTIwY2FzaW5vfGVufDF8fHx8MTc1ODcwNzkzOXww&ixlib=rb-4.1.0&q=80&w=1080',
+    gameTitle: '5 Lions Megaways 2',
+    thumbnailUrl: '/images/games/thumbnails/5-lions-megaways-2.webp',
     timeLeft: '7 days left',
     progressPercentage: 17,
     achievements: [
@@ -85,15 +80,14 @@ export const mockGames: Game[] = [
   },
   {
     id: '6',
-    gameTitle: 'Sweet Bonanza 1000',
-    thumbnailUrl:
-      'https://images.unsplash.com/photo-1636583134257-b8a45fe61a83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBjaGlwc3xlbnwxfHx8fDE3NTg3MDc5Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    timeLeft: 'Starts in 1 day',
-    progressPercentage: 0,
+    gameTitle: 'Gladiator Beasts Of Glory',
+    thumbnailUrl: '/images/games/thumbnails/gladiator-beasts-of-glory.webp',
+    timeLeft: '1 day left',
+    progressPercentage: 33,
     achievements: [
-      { id: '6-1', name: 'First Win', iconId: icons[0], completed: false },
+      { id: '6-1', name: 'First Win', iconId: icons[0], completed: true },
       { id: '6-2', name: 'Big Winner', iconId: icons[1], completed: false },
-      { id: '6-3', name: 'Perfect Play', iconId: icons[2], completed: false },
+      { id: '6-3', name: 'Perfect Play', iconId: icons[2], completed: true },
       { id: '6-4', name: 'Coin Collector', iconId: icons[3], completed: false },
       { id: '6-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '6-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
@@ -168,14 +162,14 @@ export const mockGames: Game[] = [
     gameTitle: 'Dragon Tiger Supreme',
     thumbnailUrl:
       'https://images.unsplash.com/photo-1739133710741-1468de0acf26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBkaWNlJTIwZ2FtZXN8ZW58MXx8fHwxNzU4NjgzMjcxfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    timeLeft: '1 day left',
-    progressPercentage: 75,
+    timeLeft: 'Starts in 1 day',
+    progressPercentage: 0,
     achievements: [
-      { id: '11-1', name: 'First Win', iconId: icons[0], completed: true },
-      { id: '11-2', name: 'Big Winner', iconId: icons[1], completed: true },
-      { id: '11-3', name: 'Perfect Play', iconId: icons[2], completed: true },
-      { id: '11-4', name: 'Coin Collector', iconId: icons[3], completed: true },
-      { id: '11-5', name: 'Hot Streak', iconId: icons[4], completed: true },
+      { id: '11-1', name: 'First Win', iconId: icons[0], completed: false },
+      { id: '11-2', name: 'Big Winner', iconId: icons[1], completed: false },
+      { id: '11-3', name: 'Perfect Play', iconId: icons[2], completed: false },
+      { id: '11-4', name: 'Coin Collector', iconId: icons[3], completed: false },
+      { id: '11-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '11-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
   },
