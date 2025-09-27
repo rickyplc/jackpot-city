@@ -1,0 +1,198 @@
+import type { Game } from '@/types'
+
+const icons = ['star', 'trophy', 'target', 'coins', 'flame', 'zap'] as const
+
+export const mockGames: Game[] = [
+  {
+    id: '1',
+    gameTitle: 'Gold Blitz EXTREME',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1603410246916-9b2ca82acdd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBzbG90JTIwbWFjaGluZXxlbnwxfHx8fDE3NTg2ODMyNTZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: '4 days left',
+    progressPercentage: 67,
+    achievements: [
+      { id: '1-1', name: 'First Win', iconId: icons[0], completed: true },
+      { id: '1-2', name: 'Big Winner', iconId: icons[1], completed: true },
+      { id: '1-3', name: 'Perfect Play', iconId: icons[2], completed: true },
+      { id: '1-4', name: 'Coin Collector', iconId: icons[3], completed: true },
+      { id: '1-5', name: 'Hot Streak', iconId: icons[4], completed: false },
+      { id: '1-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '2',
+    gameTitle: 'Cash Strike Hot Stepper',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1633629544357-14223c9837d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHhwb2tlciUyMGNhcmRzJTIwY2FzaW5vfGVufDF8fHx8MTc1ODU5MDkwMXww&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: '4 days left',
+    progressPercentage: 50,
+    achievements: [
+      { id: '2-1', name: 'First Win', iconId: icons[0], completed: true },
+      { id: '2-2', name: 'Big Winner', iconId: icons[1], completed: true },
+      { id: '2-3', name: 'Perfect Play', iconId: icons[2], completed: true },
+      { id: '2-4', name: 'Coin Collector', iconId: icons[3], completed: false },
+      { id: '2-5', name: 'Hot Streak', iconId: icons[4], completed: false },
+      { id: '2-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '3',
+    gameTitle: 'Links of Ra Cashingo',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1625888791210-40ea41c1d0f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb3VsZXR0ZSUyMGNhc2lub3xlbnwxfHx8fDE3NTg3MDc5Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: '5 days left',
+    progressPercentage: 33,
+    achievements: [
+      { id: '3-1', name: 'First Win', iconId: icons[0], completed: true },
+      { id: '3-2', name: 'Big Winner', iconId: icons[1], completed: true },
+      { id: '3-3', name: 'Perfect Play', iconId: icons[2], completed: false },
+      { id: '3-4', name: 'Coin Collector', iconId: icons[3], completed: false },
+      { id: '3-5', name: 'Hot Streak', iconId: icons[4], completed: false },
+      { id: '3-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '4',
+    gameTitle: '12 Masks of Fire Drums',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1742666978255-007e0fcfc0c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBibGFja2phY2slMjB0YWJsZXxlbnwxfHx8fDE3NTg3MDg0MTl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: '6 days left',
+    progressPercentage: 83,
+    achievements: [
+      { id: '4-1', name: 'First Win', iconId: icons[0], completed: true },
+      { id: '4-2', name: 'Big Winner', iconId: icons[1], completed: true },
+      { id: '4-3', name: 'Perfect Play', iconId: icons[2], completed: true },
+      { id: '4-4', name: 'Coin Collector', iconId: icons[3], completed: true },
+      { id: '4-5', name: 'Hot Streak', iconId: icons[4], completed: true },
+      { id: '4-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '5',
+    gameTitle: 'Gates of Olympus 1000',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1739133710741-1468de0acf26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWNlJTIwY2FzaW5vfGVufDF8fHx8MTc1ODcwNzkzOXww&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: '7 days left',
+    progressPercentage: 17,
+    achievements: [
+      { id: '5-1', name: 'First Win', iconId: icons[0], completed: true },
+      { id: '5-2', name: 'Big Winner', iconId: icons[1], completed: false },
+      { id: '5-3', name: 'Perfect Play', iconId: icons[2], completed: false },
+      { id: '5-4', name: 'Coin Collector', iconId: icons[3], completed: false },
+      { id: '5-5', name: 'Hot Streak', iconId: icons[4], completed: false },
+      { id: '5-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '6',
+    gameTitle: 'Sweet Bonanza 1000',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1636583134257-b8a45fe61a83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBjaGlwc3xlbnwxfHx8fDE3NTg3MDc5Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: 'Starts in 1 day',
+    progressPercentage: 0,
+    achievements: [
+      { id: '6-1', name: 'First Win', iconId: icons[0], completed: false },
+      { id: '6-2', name: 'Big Winner', iconId: icons[1], completed: false },
+      { id: '6-3', name: 'Perfect Play', iconId: icons[2], completed: false },
+      { id: '6-4', name: 'Coin Collector', iconId: icons[3], completed: false },
+      { id: '6-5', name: 'Hot Streak', iconId: icons[4], completed: false },
+      { id: '6-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '7',
+    gameTitle: 'Big Bass Bonanza',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1599579887642-9821ebe3c79a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBiYWNjYXJhdHxlbnwxfHx8fDE3NTg3MDc5Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: 'Starts in 3 days',
+    progressPercentage: 0,
+    achievements: [
+      { id: '7-1', name: 'First Win', iconId: icons[0], completed: false },
+      { id: '7-2', name: 'Big Winner', iconId: icons[1], completed: false },
+      { id: '7-3', name: 'Perfect Play', iconId: icons[2], completed: false },
+      { id: '7-4', name: 'Coin Collector', iconId: icons[3], completed: false },
+      { id: '7-5', name: 'Hot Streak', iconId: icons[4], completed: false },
+      { id: '7-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '8',
+    gameTitle: 'King Kong Cash Even Bigger Bananas 2',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1592602944193-0848995f4b5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjB3aGVlbCUyMGZvcnR1bmV8ZW58MXx8fHwxNzU4NzA3OTM5fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: 'Starts in 5 days',
+    progressPercentage: 0,
+    achievements: [
+      { id: '8-1', name: 'First Win', iconId: icons[0], completed: false },
+      { id: '8-2', name: 'Big Winner', iconId: icons[1], completed: false },
+      { id: '8-3', name: 'Perfect Play', iconId: icons[2], completed: false },
+      { id: '8-4', name: 'Coin Collector', iconId: icons[3], completed: false },
+      { id: '8-5', name: 'Hot Streak', iconId: icons[4], completed: false },
+      { id: '8-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '9',
+    gameTitle: 'Mega Fortune Dreams',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1633629544357-14223c9837d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBzbG90JTIwZ2FtZXN8ZW58MXx8fHwxNzU4NzA4NDIwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: 'Starts in 7 days',
+    progressPercentage: 0,
+    achievements: [
+      { id: '9-1', name: 'First Win', iconId: icons[0], completed: false },
+      { id: '9-2', name: 'Big Winner', iconId: icons[1], completed: false },
+      { id: '9-3', name: 'Perfect Play', iconId: icons[2], completed: false },
+      { id: '9-4', name: 'Coin Collector', iconId: icons[3], completed: false },
+      { id: '9-5', name: 'Hot Streak', iconId: icons[4], completed: false },
+      { id: '9-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '10',
+    gameTitle: 'Lightning Roulette',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1719228159232-48608b807a58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBjYXJkcyUyMHBva2VyfGVufDF8fHx8MTc1ODYzMzYxMHww&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: '2 days left',
+    progressPercentage: 100,
+    achievements: [
+      { id: '10-1', name: 'First Win', iconId: icons[0], completed: true },
+      { id: '10-2', name: 'Big Winner', iconId: icons[1], completed: true },
+      { id: '10-3', name: 'Perfect Play', iconId: icons[2], completed: true },
+      { id: '10-4', name: 'Coin Collector', iconId: icons[3], completed: true },
+      { id: '10-5', name: 'Hot Streak', iconId: icons[4], completed: true },
+      { id: '10-6', name: 'Lightning Fast', iconId: icons[5], completed: true },
+    ],
+  },
+  {
+    id: '11',
+    gameTitle: 'Dragon Tiger Supreme',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1739133710741-1468de0acf26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBkaWNlJTIwZ2FtZXN8ZW58MXx8fHwxNzU4NjgzMjcxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: '1 day left',
+    progressPercentage: 75,
+    achievements: [
+      { id: '11-1', name: 'First Win', iconId: icons[0], completed: true },
+      { id: '11-2', name: 'Big Winner', iconId: icons[1], completed: true },
+      { id: '11-3', name: 'Perfect Play', iconId: icons[2], completed: true },
+      { id: '11-4', name: 'Coin Collector', iconId: icons[3], completed: true },
+      { id: '11-5', name: 'Hot Streak', iconId: icons[4], completed: true },
+      { id: '11-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
+    ],
+  },
+  {
+    id: '12',
+    gameTitle: 'Aztec Gems Deluxe',
+    thumbnailUrl:
+      'https://images.unsplash.com/photo-1603410246916-9b2ca82acdd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbm8lMjBzbG90JTIwbWFjaGluZXxlbnwxfHx8fDE3NTg2ODMyNTZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    timeLeft: '3 days left',
+    progressPercentage: 100,
+    achievements: [
+      { id: '12-1', name: 'First Win', iconId: icons[0], completed: true },
+      { id: '12-2', name: 'Big Winner', iconId: icons[1], completed: true },
+      { id: '12-3', name: 'Perfect Play', iconId: icons[2], completed: true },
+      { id: '12-4', name: 'Coin Collector', iconId: icons[3], completed: true },
+      { id: '12-5', name: 'Hot Streak', iconId: icons[4], completed: true },
+      { id: '12-6', name: 'Lightning Fast', iconId: icons[5], completed: true },
+    ],
+  },
+]
