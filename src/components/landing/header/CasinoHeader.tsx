@@ -78,7 +78,7 @@ export function CasinoHeader() {
             {/* Deposit button */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
-                className="text-white border-0 shadow-lg text-sm sm:text-base px-3 sm:px-4 py-1.5 sm:py-2"
+                className="text-white border-0 shadow-lg text-sm sm:text-base px-3 sm:px-4 py-1.5 sm:py-2 cursor-pointer"
                 style={{
                   background: 'linear-gradient(to right, #10b981, #059669)',
                 }}
