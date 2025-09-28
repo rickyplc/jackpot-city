@@ -17,6 +17,9 @@ export const mockGames: Game[] = [
       { id: '1-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '1-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['slots'],
+    isNew: true,
+    provider: 'pragmatic',
   },
   {
     id: '2',
@@ -32,6 +35,9 @@ export const mockGames: Game[] = [
       { id: '2-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '2-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['slots', 'jackpots'],
+    isNew: false,
+    provider: 'microgaming',
   },
   {
     id: '3',
@@ -47,6 +53,9 @@ export const mockGames: Game[] = [
       { id: '3-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '3-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['slots'],
+    isNew: true,
+    provider: 'netent',
   },
   {
     id: '4',
@@ -62,6 +71,9 @@ export const mockGames: Game[] = [
       { id: '4-5', name: 'Hot Streak', iconId: icons[4], completed: true },
       { id: '4-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['slots', 'jackpots'],
+    isNew: false,
+    provider: 'netent',
   },
   {
     id: '5',
@@ -77,6 +89,9 @@ export const mockGames: Game[] = [
       { id: '5-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '5-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['slots'],
+    isNew: true,
+    provider: 'pragmatic',
   },
   {
     id: '6',
@@ -92,6 +107,9 @@ export const mockGames: Game[] = [
       { id: '6-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '6-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['slots'],
+    isNew: false,
+    provider: 'netent',
   },
   {
     id: '7',
@@ -108,6 +126,9 @@ export const mockGames: Game[] = [
       { id: '7-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '7-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['slots'],
+    isNew: false,
+    provider: 'pragmatic',
   },
   {
     id: '8',
@@ -124,6 +145,9 @@ export const mockGames: Game[] = [
       { id: '8-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '8-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['roulette'],
+    isNew: false,
+    provider: 'microgaming',
   },
   {
     id: '9',
@@ -140,6 +164,9 @@ export const mockGames: Game[] = [
       { id: '9-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '9-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['poker'],
+    isNew: false,
+    provider: 'netent',
   },
   {
     id: '10',
@@ -156,6 +183,9 @@ export const mockGames: Game[] = [
       { id: '10-5', name: 'Hot Streak', iconId: icons[4], completed: true },
       { id: '10-6', name: 'Lightning Fast', iconId: icons[5], completed: true },
     ],
+    categories: ['live', 'roulette'],
+    isNew: false,
+    provider: 'evolution',
   },
   {
     id: '11',
@@ -172,6 +202,9 @@ export const mockGames: Game[] = [
       { id: '11-5', name: 'Hot Streak', iconId: icons[4], completed: false },
       { id: '11-6', name: 'Lightning Fast', iconId: icons[5], completed: false },
     ],
+    categories: ['live'],
+    isNew: false,
+    provider: 'evolution',
   },
   {
     id: '12',
@@ -188,5 +221,8 @@ export const mockGames: Game[] = [
       { id: '12-5', name: 'Hot Streak', iconId: icons[4], completed: true },
       { id: '12-6', name: 'Lightning Fast', iconId: icons[5], completed: true },
     ],
+    categories: ['slots'],
+    isNew: false,
+    provider: 'pragmatic',
   },
 ]
