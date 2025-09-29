@@ -36,10 +36,21 @@ export function GameExplorer({ games }: Props) {
 
   const selectedForMenu: CategoryId = isNewOnly ? 'new' : category
 
-  let filtered = filterByCategory(games, category)
+  const hasQuery = query.trim().length > 0
 
-  filtered = filterByNew(filtered, isNewOnly)
-  filtered = filterByQuery(filtered, query)
+  let filtered = games
+
+  if (hasQuery) {
+    filtered = filterByQuery(games, query)
+  } else {
+    const categoryForFiltering: CategoryId = isNewOnly ? 'all' : category
+
+    filtered = filterByCategory(games, categoryForFiltering)
+  }
+
+  if (!hasQuery) {
+    filtered = filterByNew(filtered, isNewOnly)
+  }
 
   const { active, completed, comingSoon } = partitionGames(filtered)
   const total = active.length + completed.length + comingSoon.length
