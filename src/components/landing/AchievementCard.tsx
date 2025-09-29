@@ -142,11 +142,15 @@ export function AchievementCard({
         <div className="space-y-3">
           <div className="flex justify-between items-center">
             <motion.span
-              className={`text-sm font-medium ${isComingSoon ? 'text-gray-400' : 'text-white/80'}`}
+              className={`text-sm font-medium ${
+                isComingSoon
+                  ? 'text-gray-400'
+                  : 'text-white/80 hover:text-white transition-colors duration-200'
+              }`}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              whileHover={isComingSoon ? {} : { color: '#ffffff', scale: 1.02 }}
+              whileHover={isComingSoon ? {} : { scale: 1.02 }}
             >
               {completedCount}/6 Completed
             </motion.span>
