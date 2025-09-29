@@ -37,6 +37,12 @@ export function GameMenuBar({
     }
   }, [showSearch])
 
+  const clearSearch = () => {
+    setQuery('')
+    onSearch?.('')
+    inputRef.current?.focus()
+  }
+
   return (
     <nav className="top-12 z-40 w-full bg-black/40 backdrop-blur border-b border-white/10">
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-2 sm:px-6">
@@ -104,17 +110,19 @@ export function GameMenuBar({
                     setQuery(value)
                     onSearch?.(value)
                   }}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Escape') {
+                      event.preventDefault()
+                      clearSearch()
+                    }
+                  }}
                   placeholder="Discover games…"
                   className="w-40 rounded-md border border-white/10 bg-black/40 px-2 pr-7 py-1 text-xs text-white placeholder:text-slate-400 outline-none focus:ring-1 focus:ring-sky-500"
                 />
                 {query && (
                   <button
                     type="button"
-                    onClick={() => {
-                      setQuery('')
-                      onSearch?.('')
-                      inputRef.current?.focus()
-                    }}
+                    onClick={clearSearch}
                     className="absolute right-1 top-1/2 -translate-y-1/2 rounded p-1 text-slate-300 hover:text-white hover:bg-white/10"
                     aria-label="Clear search"
                     tabIndex={-1} // keep typing flow in the input
