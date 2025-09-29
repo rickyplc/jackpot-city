@@ -1,5 +1,6 @@
 import { Clock } from 'lucide-react'
 import { motion } from 'motion/react'
+import Image from 'next/image'
 
 import { Badge } from '@/components/ui/Badge'
 import { achievementIconMap } from '@/components/ui/icons/AchievementIcons'
@@ -87,10 +88,13 @@ export function AchievementCard({
       {/* Enhanced game thumbnail - optimized for smaller tiles */}
       <div className="relative h-40 sm:h-44 md:h-48 lg:h-52 overflow-hidden rounded-t-2xl">
         <div className="w-full h-full relative">
-          <img
+          <Image
             src={thumbnailUrl}
             alt={gameTitle}
-            className={`w-full h-full object-cover ${isComingSoon ? 'brightness-50 saturate-50' : 'brightness-110 saturate-110'}`}
+            fill
+            sizes="(min-width: 1024px) 20rem, (min-width: 768px) 18rem, (min-width: 640px) 16rem, 14rem"
+            className={`object-cover ${isComingSoon ? 'brightness-50 saturate-50' : 'brightness-110 saturate-110'}`}
+            priority={false}
           />
 
           {/* Subtle vignette effect for depth */}

@@ -87,7 +87,10 @@ export function CasinoHeader({ menu }: CasinoHeaderProps): ReactElement {
                 className="border-2 w-8 h-8 sm:w-10 sm:h-10"
                 style={{ borderColor: '#3385FF' }}
               >
-                <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face" />
+                <AvatarImage
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face"
+                  alt="Profile Picture"
+                />
                 <AvatarFallback className="text-white" style={{ backgroundColor: '#3385FF' }}>
                   <User className="w-3 h-3 sm:w-4 sm:h-4" />
                 </AvatarFallback>

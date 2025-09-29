@@ -1,3 +1,4 @@
+import Image, { type ImageProps } from 'next/image'
 import * as React from 'react'
 
 export function Avatar({ className = '', style, children }: React.HTMLAttributes<HTMLDivElement>) {
@@ -11,15 +12,18 @@ export function Avatar({ className = '', style, children }: React.HTMLAttributes
   )
 }
 
-type ImgProps = React.ImgHTMLAttributes<HTMLImageElement>
+type AvatarNextImageProps = Omit<ImageProps, 'fill' | 'width' | 'height'> & {
+  sizes?: string
+}
 
-export function AvatarImage(props: ImgProps) {
+export function AvatarImage({
+  className,
+  alt = '',
+  sizes = '64px',
+  ...rest
+}: AvatarNextImageProps) {
   return (
-    <img
-      {...props}
-      alt={props.alt ?? ''}
-      className={`h-full w-full object-cover ${props.className ?? ''}`}
-    />
+    <Image alt={alt} fill sizes={sizes} className={`object-cover ${className ?? ''}`} {...rest} />
   )
 }
 
