@@ -1,7 +1,7 @@
 'use client'
 
 import { Bell, MessageSquareText, Search, Star } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { menuIconMap } from '@/components/ui/icons/MenuIcons'
 import type { CategoryId, MenuItem } from '@/types/navigation'
@@ -29,6 +29,13 @@ export function GameMenuBar({
 }: Props) {
   const [showSearch, setShowSearch] = useState(false)
   const [query, setQuery] = useState('')
+  const inputRef = useRef<HTMLInputElement | null>(null)
+
+  useEffect(() => {
+    if (showSearch) {
+      inputRef.current?.focus()
+    }
+  }, [showSearch])
 
   return (
     <nav className="top-12 z-40 w-full bg-black/40 backdrop-blur border-b border-white/10">
@@ -88,6 +95,7 @@ export function GameMenuBar({
             </button>
             {showSearch && (
               <input
+                ref={inputRef}
                 value={query}
                 onChange={(event) => {
                   const value = event.target.value
