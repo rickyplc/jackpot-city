@@ -1,7 +1,7 @@
 'use client'
 
-import { Bell, MessageSquareText, Search, Star, X } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { Bell, MessageSquareText, Star, X } from 'lucide-react'
+import { useRef, useState } from 'react'
 
 import { menuIconMap } from '@/components/ui/icons/MenuIcons'
 import type { CategoryId, MenuItem } from '@/types/navigation'
@@ -27,15 +27,8 @@ export function GameMenuBar({
   onFavorites,
   onSearch,
 }: Props) {
-  const [showSearch, setShowSearch] = useState(false)
   const [query, setQuery] = useState('')
   const inputRef = useRef<HTMLInputElement | null>(null)
-
-  useEffect(() => {
-    if (showSearch) {
-      inputRef.current?.focus()
-    }
-  }, [showSearch])
 
   const clearSearch = () => {
     setQuery('')
@@ -91,47 +84,36 @@ export function GameMenuBar({
           </button>
 
           <div className="flex items-center">
-            <button
-              type="button"
-              onClick={() => setShowSearch((value) => !value)}
-              className="rounded-md px-2 py-1.5 text-xs text-slate-200 hover:bg-white/5 hover:text-white"
-              aria-label="Discover Games"
-            >
-              <Search className="h-4 w-4" />
-            </button>
-
-            {showSearch && (
-              <div className="relative ml-2">
-                <input
-                  ref={inputRef}
-                  value={query}
-                  onChange={(event) => {
-                    const value = event.target.value
-                    setQuery(value)
-                    onSearch?.(value)
-                  }}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Escape') {
-                      event.preventDefault()
-                      clearSearch()
-                    }
-                  }}
-                  placeholder="Discover games…"
-                  className="w-40 rounded-md border border-white/10 bg-black/40 px-2 pr-7 py-1 text-xs text-white placeholder:text-slate-400 outline-none focus:ring-1 focus:ring-sky-500"
-                />
-                {query && (
-                  <button
-                    type="button"
-                    onClick={clearSearch}
-                    className="absolute right-1 top-1/2 -translate-y-1/2 rounded p-1 text-slate-300 hover:text-white hover:bg-white/10"
-                    aria-label="Clear search"
-                    tabIndex={-1} // keep typing flow in the input
-                  >
-                    <X className="h-3.5 w-3.5" />
-                  </button>
-                )}
-              </div>
-            )}
+            <div className="relative ml-2">
+              <input
+                ref={inputRef}
+                value={query}
+                onChange={(event) => {
+                  const value = event.target.value
+                  setQuery(value)
+                  onSearch?.(value)
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === 'Escape') {
+                    event.preventDefault()
+                    clearSearch()
+                  }
+                }}
+                placeholder="Discover games…"
+                className="w-40 rounded-md border border-white/10 bg-black/40 px-2 pr-7 py-1 text-xs text-white placeholder:text-slate-400 outline-none focus:ring-1 focus:ring-sky-500"
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute right-1 top-1/2 -translate-y-1/2 rounded p-1 text-slate-300 hover:text-white hover:bg-white/10"
+                  aria-label="Clear search"
+                  tabIndex={-1} // keep typing flow in the input
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              )}
+            </div>
           </div>
 
           <button
