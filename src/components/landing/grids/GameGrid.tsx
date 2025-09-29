@@ -24,7 +24,7 @@ export function GameGrid({ games }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
             transition={{ duration: 0.28, ease: 'easeOut', delay: index * 0.02 }}
-            className="relative z-10 hover:z-[10000] transition-all duration-200"
+            className="relative z-10 transition-all duration-200"
           >
             <AchievementCard {...game} />
           </motion.div>
