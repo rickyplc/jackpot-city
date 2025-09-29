@@ -34,3 +34,36 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Unit testing (Vitest)
+
+This project uses [Vitest](https://vitest.dev) with jsdom and Testing Library for unit tests.
+
+Quick start:
+
+```bash
+# run all unit tests once
+npm run test:unit
+
+# watch mode
+npm run test:watch
+
+# coverage report (text + lcov)
+npm run test:coverage
+```
+
+Run a single test file:
+
+```bash
+npm run test:unit __tests__/unit/lib/games/filter.test.ts
+```
+
+Filter by test name (pattern):
+
+```bash
+npm run test:unit -- -t "filterByQuery"
+```
+
+Notes:
+
+- Keep unit tests under `__tests__/unit/**` to match the current project layout.
