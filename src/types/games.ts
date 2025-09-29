@@ -1,8 +1,7 @@
 import type { CategoryId } from '@/types/navigation'
+import type { ProviderId } from '@/types/providers'
 
 export type AchievementIconId = 'star' | 'trophy' | 'target' | 'coins' | 'flame' | 'zap'
-
-export type ProviderId = 'pragmatic' | 'evolution' | 'netent' | 'microgaming' | (string & {})
 
 export interface Achievement {
   id: string
