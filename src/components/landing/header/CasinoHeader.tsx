@@ -3,6 +3,7 @@
 import { Coins, User } from 'lucide-react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { GameMenuBar } from '@/components/landing/header/GameMenuBar'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
@@ -34,7 +35,8 @@ export function CasinoHeader({ menu }: CasinoHeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div>
+
+          <Link href="/" aria-label="Go to home">
             <Image
               src="/images/logo/logo.webp"
               alt="Jackpot City"
@@ -42,7 +44,7 @@ export function CasinoHeader({ menu }: CasinoHeaderProps) {
               height={45}
               priority
             />
-          </div>
+          </Link>
 
           {/* User section */}
           <div className="flex items-center space-x-2 sm:space-x-4">
