@@ -1,12 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useMemo, useState } from 'react'
 
 import type { Game } from '@/types'
 import { CATEGORY_ITEMS, type CategoryId } from '@/types/navigation'
 
 import { filterByCategory, filterByNew, filterByQuery } from '@/lib/games/filter'
 import { partitionGames } from '@/lib/games/partition'
+import {
+  buildPathWithCategory,
+  deriveCategoryStateFromParams,
+} from '@/lib/navigation/categoryState'
+
 import { pluralise } from '@/lib/text/pluralise'
 
 import { CasinoHeader } from '@/components/landing/header/CasinoHeader'
@@ -15,29 +21,55 @@ import { GameSection } from '@/components/landing/sections/GameSection'
 type Props = { games: Game[] }
 
 export function GameExplorer({ games }: Props) {
-  const [category, setCategory] = useState<CategoryId>('all')
-  const [isNewOnly, setIsNewOnly] = useState(false)
-  const [query, setQuery] = useState('')
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  // Initial state from URL
+  const initialState = useMemo(
+    () => deriveCategoryStateFromParams(new URLSearchParams(searchParams)),
+    [searchParams],
+  )
+  const [category, setCategory] = useState<CategoryId>(initialState.category)
+  const [isNewOnly, setIsNewOnly] = useState<boolean>(initialState.isNewOnly)
+  const [query, setQuery] = useState<string>('')
+
+  // Sync state on URL changes (back/forward, external nav)
+  useEffect(() => {
+    const next = deriveCategoryStateFromParams(new URLSearchParams(searchParams))
+    if (next.category !== category || next.isNewOnly !== isNewOnly) {
+      setCategory(next.category)
+      setIsNewOnly(next.isNewOnly)
+    }
+  }, [searchParams, category, isNewOnly])
+
+  const updateUrlCategory = (nextCategory: CategoryId) => {
+    const nextPath = buildPathWithCategory(
+      pathname,
+      new URLSearchParams(searchParams),
+      nextCategory,
+    )
+    router.replace(nextPath, { scroll: false })
+  }
 
   const handleSelect = (id: CategoryId) => {
     if (id === 'new') {
-      setIsNewOnly((value) => !value)
+      const nextIsNewOnly = !isNewOnly
+      setIsNewOnly(nextIsNewOnly)
+      updateUrlCategory(nextIsNewOnly ? 'new' : category)
       return
     }
 
-    if (id === 'provider') {
-      // Hook up provider/overflow UI later.
-      return
-    }
-
+    if (id === 'provider') return
     setIsNewOnly(false)
     setCategory(id)
+    updateUrlCategory(id)
   }
 
   const selectedForMenu: CategoryId = isNewOnly ? 'new' : category
 
+  // Filtering
   const hasQuery = query.trim().length > 0
-
   let filtered = games
 
   if (hasQuery) {
@@ -46,9 +78,6 @@ export function GameExplorer({ games }: Props) {
     const categoryForFiltering: CategoryId = isNewOnly ? 'all' : category
 
     filtered = filterByCategory(games, categoryForFiltering)
-  }
-
-  if (!hasQuery) {
     filtered = filterByNew(filtered, isNewOnly)
   }
 
@@ -72,9 +101,6 @@ export function GameExplorer({ games }: Props) {
           <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-14 text-center">
             <p className="text-base sm:text-lg text-slate-200">
               No games available for this selection{query ? ` matching “${query}”` : ''}.
-            </p>
-            <p className="mt-1 text-sm text-slate-400">
-              Try a different category{query ? ', clearing your search' : ''}.
             </p>
           </div>
         ) : (
