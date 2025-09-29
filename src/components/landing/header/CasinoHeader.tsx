@@ -4,10 +4,25 @@ import { Coins, User } from 'lucide-react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 
+import { GameMenuBar } from '@/components/landing/header/GameMenuBar'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
 import { Button } from '@/components/ui/Button'
+import type { CategoryId, MenuItem } from '@/types/navigation'
 
-export function CasinoHeader() {
+type CasinoHeaderProps = {
+  menu?: {
+    items: MenuItem[]
+    selected: CategoryId
+    onSelect: (id: CategoryId) => void
+    promotionsCount?: number
+    onPromotions?: () => void
+    onContact?: () => void
+    onFavorites?: () => void
+    onSearch?: (value: string) => void
+  }
+}
+
+export function CasinoHeader({ menu }: CasinoHeaderProps) {
   return (
     <motion.header
       initial={{ opacity: 0, y: -30 }}
@@ -79,9 +94,7 @@ export function CasinoHeader() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 className="text-white border-0 shadow-lg text-sm sm:text-base px-3 sm:px-4 py-1.5 sm:py-2 cursor-pointer"
-                style={{
-                  background: 'linear-gradient(to right, #10b981, #059669)',
-                }}
+                style={{ background: 'linear-gradient(to right, #10b981, #059669)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = 'linear-gradient(to right, #059669, #047857)'
                 }}
@@ -95,6 +108,20 @@ export function CasinoHeader() {
           </div>
         </div>
       </div>
+
+      {/* Inline menu under the header, inside the same animation container */}
+      {menu && (
+        <GameMenuBar
+          items={menu.items}
+          selected={menu.selected}
+          onSelect={menu.onSelect}
+          promotionsCount={menu.promotionsCount}
+          onPromotions={menu.onPromotions}
+          onContact={menu.onContact}
+          onFavorites={menu.onFavorites}
+          onSearch={menu.onSearch}
+        />
+      )}
     </motion.header>
   )
 }
