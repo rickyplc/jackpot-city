@@ -35,14 +35,18 @@ export function CasinoHeader({ menu }: CasinoHeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-
-          <Link href="/" aria-label="Go to home">
+          <Link
+            href="/"
+            aria-label="Go to home"
+            className="relative block h-10 w-40 sm:h-11 sm:w-48"
+          >
             <Image
               src="/images/logo/logo.webp"
               alt="Jackpot City"
-              width={200}
-              height={45}
+              fill
               priority
+              className="object-contain"
+              sizes="(max-width: 640px) 10rem, 12rem"
             />
           </Link>
 
