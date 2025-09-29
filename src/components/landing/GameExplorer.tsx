@@ -1,21 +1,22 @@
 'use client'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import type { Game } from '@/types'
+import type { Game, ProviderId } from '@/types'
 import { CATEGORY_ITEMS, type CategoryId } from '@/types/navigation'
 
-import { filterByCategory, filterByNew, filterByQuery } from '@/lib/games/filter'
+import { filterByCategory, filterByNew, filterByProvider, filterByQuery } from '@/lib/games/filter'
 import { partitionGames } from '@/lib/games/partition'
 import {
   buildPathWithCategory,
   deriveCategoryStateFromParams,
 } from '@/lib/navigation/categoryState'
-
+import { buildPathWithProvider, deriveProviderFromParams } from '@/lib/navigation/providerState'
 import { pluralise } from '@/lib/text/pluralise'
 
 import { CasinoHeader } from '@/components/landing/header/CasinoHeader'
+import { ProviderOverlay } from '@/components/landing/header/ProviderOverlay'
 import { GameSection } from '@/components/landing/sections/GameSection'
 
 type Props = { games: Game[] }
@@ -25,61 +26,98 @@ export function GameExplorer({ games }: Props) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  // Initial state from URL
-  const initialState = useMemo(
-    () => deriveCategoryStateFromParams(new URLSearchParams(searchParams)),
-    [searchParams],
-  )
-  const [category, setCategory] = useState<CategoryId>(initialState.category)
-  const [isNewOnly, setIsNewOnly] = useState<boolean>(initialState.isNewOnly)
-  const [query, setQuery] = useState<string>('')
+  // URL -> state (category/new)
+  const initialCat = deriveCategoryStateFromParams(new URLSearchParams(searchParams))
+  const [category, setCategory] = useState<CategoryId>(initialCat.category)
+  const [isNewOnly, setIsNewOnly] = useState<boolean>(initialCat.isNewOnly)
 
-  // Sync state on URL changes (back/forward, external nav)
+  // URL -> state (provider)
+  const initialProvider = deriveProviderFromParams(new URLSearchParams(searchParams))
+  const [provider, setProvider] = useState<ProviderId | undefined>(initialProvider)
+
+  const [query, setQuery] = useState('')
+
+  // Sync when URL changes (back/forward)
   useEffect(() => {
-    const next = deriveCategoryStateFromParams(new URLSearchParams(searchParams))
-    if (next.category !== category || next.isNewOnly !== isNewOnly) {
-      setCategory(next.category)
-      setIsNewOnly(next.isNewOnly)
+    const nextCat = deriveCategoryStateFromParams(new URLSearchParams(searchParams))
+    if (nextCat.category !== category || nextCat.isNewOnly !== isNewOnly) {
+      setCategory(nextCat.category)
+      setIsNewOnly(nextCat.isNewOnly)
     }
-  }, [searchParams, category, isNewOnly])
+    const nextProvider = deriveProviderFromParams(new URLSearchParams(searchParams))
+    if (nextProvider !== provider) {
+      setProvider(nextProvider)
+    }
+  }, [searchParams, category, isNewOnly, provider])
 
-  const updateUrlCategory = (nextCategory: CategoryId) => {
-    const nextPath = buildPathWithCategory(
-      pathname,
-      new URLSearchParams(searchParams),
-      nextCategory,
-    )
-    router.replace(nextPath, { scroll: false })
+  /** Build URL with the given category, ensuring provider is removed (mutually exclusive). */
+  const setUrlCategory = (nextCategory: CategoryId) => {
+    const baseParams = new URLSearchParams(searchParams.toString())
+    baseParams.delete('provider') // enforce exclusivity
+    const href = buildPathWithCategory(pathname, baseParams, nextCategory)
+    router.replace(href, { scroll: false })
   }
 
-  const handleSelect = (id: CategoryId) => {
+  /** Build URL with the given provider, ensuring category is removed (mutually exclusive). */
+  const setUrlProvider = (next?: ProviderId) => {
+    const baseParams = new URLSearchParams(searchParams.toString())
+    baseParams.delete('category') // enforce exclusivity
+    const href = buildPathWithProvider(pathname, baseParams, next)
+    router.replace(href, { scroll: false })
+  }
+
+  const [isProviderOpen, setIsProviderOpen] = useState(false)
+
+  const handleSelectCategory = (id: CategoryId) => {
     if (id === 'new') {
-      const nextIsNewOnly = !isNewOnly
-      setIsNewOnly(nextIsNewOnly)
-      updateUrlCategory(nextIsNewOnly ? 'new' : category)
+      // Selecting "new" also clears provider (mutually exclusive in URL)
+      const next = !isNewOnly
+      setIsNewOnly(next)
+      setProvider(undefined)
+      setUrlCategory(next ? 'new' : category)
       return
     }
-
-    if (id === 'provider') return
+    if (id === 'provider') {
+      setIsProviderOpen(true)
+      return
+    }
+    // Normal category click clears provider and turns off "new"
     setIsNewOnly(false)
+    setProvider(undefined)
     setCategory(id)
-    updateUrlCategory(id)
+    setUrlCategory(id)
   }
 
-  const selectedForMenu: CategoryId = isNewOnly ? 'new' : category
+  const handleSelectProvider = (next?: ProviderId) => {
+    // Selecting provider clears category/new (mutually exclusive in URL)
+    setIsNewOnly(false)
+    setCategory('all')
+    setProvider(next)
+    setUrlProvider(next)
+  }
 
-  // Filtering
+  const selectedForMenu: CategoryId = provider ? 'provider' : isNewOnly ? 'new' : category
+
+  // ---------- Filtering pipeline ----------
   const hasQuery = query.trim().length > 0
-  let filtered = games
+  let filtered: Game[] = games
 
   if (hasQuery) {
-    filtered = filterByQuery(games, query)
+    // Search: keep provider filter, ignore category/new for clearer UX.
+    filtered = filterByProvider(filtered, provider)
+    filtered = filterByQuery(filtered, query)
   } else {
-    const categoryForFiltering: CategoryId = isNewOnly ? 'all' : category
+    // Provider first (no-op for undefined/'all')
+    filtered = filterByProvider(filtered, provider)
 
-    filtered = filterByCategory(games, categoryForFiltering)
+    // If a provider is active, neutralise category by using the 'provider' sentinel
+    const effectiveCategory: CategoryId = provider ? 'provider' : category
+    filtered = filterByCategory(filtered, effectiveCategory)
+
+    // New-only last
     filtered = filterByNew(filtered, isNewOnly)
   }
+  // ---------------------------------------
 
   const { active, completed, comingSoon } = partitionGames(filtered)
   const total = active.length + completed.length + comingSoon.length
@@ -90,7 +128,8 @@ export function GameExplorer({ games }: Props) {
         menu={{
           items: CATEGORY_ITEMS,
           selected: selectedForMenu,
-          onSelect: handleSelect,
+          onSelect: handleSelectCategory,
+          onOpenProvider: () => setIsProviderOpen(true),
           promotionsCount: 4,
           onSearch: setQuery,
         }}
@@ -115,7 +154,6 @@ export function GameExplorer({ games }: Props) {
                 accentColor="#8b5cf6"
               />
             )}
-
             {completed.length > 0 && (
               <GameSection
                 title="🏆 Completed Weekly Challenges"
@@ -126,7 +164,6 @@ export function GameExplorer({ games }: Props) {
                 accentColor="#f59e0b"
               />
             )}
-
             {comingSoon.length > 0 && (
               <GameSection
                 title="⏰ Coming Soon"
@@ -137,13 +174,17 @@ export function GameExplorer({ games }: Props) {
                 accentColor="#9ca3af"
               />
             )}
-
-            <p className="mt-12 sm:mt-16 text-center text-blue-200/80 text-sm sm:text-base">
-              🎲 New challenges are added weekly. Check back regularly for more rewards! 🎰
-            </p>
           </>
         )}
       </div>
+
+      {/* Provider overlay */}
+      <ProviderOverlay
+        open={isProviderOpen}
+        selected={provider}
+        onSelect={handleSelectProvider}
+        onClose={() => setIsProviderOpen(false)}
+      />
     </>
   )
 }

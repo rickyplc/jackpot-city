@@ -11,6 +11,7 @@ type Props = {
   items: MenuItem[]
   selected: CategoryId
   onSelect: (id: CategoryId) => void
+  onOpenProvider?: () => void
   promotionsCount?: number
   onPromotions?: () => void
   onContact?: () => void
@@ -22,6 +23,7 @@ export function GameMenuBar({
   items,
   selected,
   onSelect,
+  onOpenProvider,
   promotionsCount = 0,
   onPromotions,
   onContact,
@@ -59,11 +61,18 @@ export function GameMenuBar({
           <ul className="flex items-center gap-2 overflow-x-auto scroll-smooth whitespace-nowrap pr-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {items.map(({ id, label, iconId }) => {
               const active = id === selected
+              const handleClick = () => {
+                if (id === 'provider') {
+                  onOpenProvider?.()
+                  return
+                }
+                onSelect(id)
+              }
               return (
                 <li key={id} className="shrink-0">
                   <button
                     type="button"
-                    onClick={() => onSelect(id)}
+                    onClick={handleClick}
                     className={`cursor-pointer group flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs transition
                       ${active ? 'bg-white/10 text-white' : 'text-slate-300 hover:bg-white/5 hover:text-white'}`}
                   >
@@ -148,11 +157,20 @@ export function GameMenuBar({
         </div>
       </div>
 
+      {/* Mobile category overlay */}
       <MobileCategoryOverlay
         open={isMenuOpen}
         items={items}
         selected={selected}
-        onSelect={onSelect}
+        onSelect={(id) => {
+          if (id === 'provider') {
+            setIsMenuOpen(false)
+            onOpenProvider?.()
+            return
+          }
+          onSelect(id)
+          setIsMenuOpen(false)
+        }}
         onClose={() => setIsMenuOpen(false)}
       />
     </nav>

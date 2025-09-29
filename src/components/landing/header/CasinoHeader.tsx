@@ -14,6 +14,7 @@ type CasinoHeaderProps = {
     items: MenuItem[]
     selected: CategoryId
     onSelect: (id: CategoryId) => void
+    onOpenProvider?: () => void
     promotionsCount?: number
     onPromotions?: () => void
     onContact?: () => void
@@ -115,6 +116,7 @@ export function CasinoHeader({ menu }: CasinoHeaderProps) {
           items={menu.items}
           selected={menu.selected}
           onSelect={menu.onSelect}
+          onOpenProvider={menu.onOpenProvider}
           promotionsCount={menu.promotionsCount}
           onPromotions={menu.onPromotions}
           onContact={menu.onContact}
