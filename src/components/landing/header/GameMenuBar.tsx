@@ -106,9 +106,9 @@ export function GameMenuBar({
                 <button
                   type="button"
                   onClick={clearSearch}
-                  className="absolute right-1 top-1/2 -translate-y-1/2 rounded p-1 text-slate-300 hover:text-white hover:bg-white/10"
+                  className="cursor-pointer absolute right-1 top-1/2 -translate-y-1/2 rounded p-1 text-slate-300 hover:text-white hover:bg-white/10"
                   aria-label="Clear search"
-                  tabIndex={-1} // keep typing flow in the input
+                  tabIndex={-1}
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
