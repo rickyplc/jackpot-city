@@ -15,12 +15,7 @@ type Props = {
 
 export function GameSection({ title, subtitle, games, delay, primaryColor, accentColor }: Props) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.8, type: 'spring', stiffness: 100 }}
-      className="mb-12 sm:mb-16"
-    >
+    <motion.div layout initial={false} animate={{ opacity: 1, y: 0 }} className="mb-12 sm:mb-16">
       <motion.div
         className="text-center mb-6 sm:mb-8"
         initial={{ opacity: 0, y: 20 }}
@@ -49,15 +44,13 @@ export function GameSection({ title, subtitle, games, delay, primaryColor, accen
         </motion.p>
 
         <motion.div
+          layout
           className="w-20 h-1 mx-auto mt-4 rounded-full"
           style={{ background: `linear-gradient(90deg, ${primaryColor}, ${accentColor})` }}
-          initial={{ width: 0 }}
-          animate={{ width: 80 }}
-          transition={{ delay: delay + 0.3, duration: 0.8, ease: 'easeOut' }}
         />
       </motion.div>
 
-      <GameGrid games={games} delay={delay} />
+      <GameGrid games={games} />
     </motion.div>
   )
 }
