@@ -89,7 +89,7 @@ export function GameMenuBar({
               type="button"
               onClick={() => setShowSearch((v) => !v)}
               className="rounded-md px-2 py-1.5 text-xs text-slate-200 hover:bg-white/5 hover:text-white"
-              aria-label="Find Games"
+              aria-label="Discover Games"
             >
               <Search className="h-4 w-4" />
             </button>
@@ -102,7 +102,7 @@ export function GameMenuBar({
                   setQuery(value)
                   onSearch?.(value)
                 }}
-                placeholder="Find games…"
+                placeholder="Discover games…"
                 className="ml-2 w-40 rounded-md border border-white/10 bg-black/40 px-2 py-1 text-xs text-white placeholder:text-slate-400 outline-none focus:ring-1 focus:ring-sky-500"
               />
             )}
