@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import type { ReactElement } from 'react'
 import { useEffect, useState } from 'react'
 
 import type { Game, ProviderId } from '@/types'
@@ -21,7 +22,7 @@ import { GameSection } from '@/components/landing/sections/GameSection'
 
 type Props = { games: Game[] }
 
-export function GameExplorer({ games }: Props) {
+export function GameExplorer({ games }: Props): ReactElement {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()

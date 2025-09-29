@@ -1,6 +1,7 @@
 'use client'
 
 import { X } from 'lucide-react'
+import type { ReactElement } from 'react'
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -15,7 +16,7 @@ type Props = {
   onClose: () => void
 }
 
-export function ProviderOverlay({ open, selected, onSelect, onClose }: Props) {
+export function ProviderOverlay({ open, selected, onSelect, onClose }: Props): ReactElement | null {
   const isMounted = useIsMounted()
   useBodyScrollLock(open)
 

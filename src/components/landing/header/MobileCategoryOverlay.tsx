@@ -1,6 +1,7 @@
 'use client'
 
 import { X } from 'lucide-react'
+import type { ReactElement } from 'react'
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -16,7 +17,13 @@ type Props = {
   onClose: () => void
 }
 
-export function MobileCategoryOverlay({ open, items, selected, onSelect, onClose }: Props) {
+export function MobileCategoryOverlay({
+  open,
+  items,
+  selected,
+  onSelect,
+  onClose,
+}: Props): ReactElement | null {
   const isMounted = useIsMounted()
   useBodyScrollLock(open)
 

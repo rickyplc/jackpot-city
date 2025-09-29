@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
+import type { ReactElement } from 'react'
 
 import { GameGrid } from '@/components/landing/grids/GameGrid'
 import type { Game } from '@/types'
@@ -13,7 +14,14 @@ type Props = {
   accentColor: string
 }
 
-export function GameSection({ title, subtitle, games, delay, primaryColor, accentColor }: Props) {
+export function GameSection({
+  title,
+  subtitle,
+  games,
+  delay,
+  primaryColor,
+  accentColor,
+}: Props): ReactElement {
   return (
     <motion.div layout initial={false} animate={{ opacity: 1, y: 0 }} className="mb-12 sm:mb-16">
       <motion.div

@@ -1,6 +1,7 @@
 'use client'
 
 import { Bell, Menu, MessageSquareText, Star, X } from 'lucide-react'
+import type { ReactElement } from 'react'
 import { useRef, useState } from 'react'
 
 import { MobileCategoryOverlay } from '@/components/landing/header/MobileCategoryOverlay'
@@ -29,7 +30,7 @@ export function GameMenuBar({
   onContact,
   onFavorites,
   onSearch,
-}: Props) {
+}: Props): ReactElement {
   const [query, setQuery] = useState('')
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)

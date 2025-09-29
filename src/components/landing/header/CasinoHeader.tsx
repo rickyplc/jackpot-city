@@ -4,6 +4,7 @@ import { Coins, User } from 'lucide-react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import type { ReactElement } from 'react'
 
 import { GameMenuBar } from '@/components/landing/header/GameMenuBar'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
@@ -24,7 +25,7 @@ type CasinoHeaderProps = {
   }
 }
 
-export function CasinoHeader({ menu }: CasinoHeaderProps) {
+export function CasinoHeader({ menu }: CasinoHeaderProps): ReactElement {
   return (
     <motion.header
       initial={{ opacity: 0, y: -30 }}
