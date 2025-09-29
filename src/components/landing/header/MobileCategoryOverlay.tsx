@@ -106,30 +106,6 @@ export function MobileCategoryOverlay({ open, items, selected, onSelect, onClose
           </ul>
         </div>
       </div>
-
-      {/* Scoped keyframes */}
-      <style jsx>{`
-        @keyframes fadeInDown {
-          from {
-            opacity: 0;
-            transform: translateY(-6px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(8px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>,
     document.body,
   )
