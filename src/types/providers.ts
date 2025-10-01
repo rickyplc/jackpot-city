@@ -1,11 +1,8 @@
-export type ProviderIconId = 'pragmatic' | 'evolution' | 'netent' | 'microgaming'
-
-export type ProviderId = 'pragmatic' | 'evolution' | 'netent' | 'microgaming' | (string & {})
+export type ProviderId = 'pragmatic' | 'evolution' | 'netent' | 'microgaming'
 
 export type ProviderItem = {
   id: ProviderId
   label: string
-  iconId?: ProviderIconId
 }
 
 export const PROVIDERS: ProviderItem[] = [
