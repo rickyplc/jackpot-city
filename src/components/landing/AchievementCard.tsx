@@ -203,7 +203,7 @@ export function AchievementCard({
 
         {/* Modern achievement icons */}
         <div className="flex gap-x-1.5 md:gap-x-1 lg:gap-x-1.5 items-center justify-center">
-          {achievements.map((achievement, index) => (
+          {achievements.map((achievement) => (
             <motion.div
               key={achievement.id}
               initial={{ opacity: 1, scale: 1 }}
